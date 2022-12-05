@@ -9,5 +9,5 @@ import (
 func main() {
 	inputPrefix := "./input"
 	fmt.Println("Day 1")
-	day1.Day1(inputPrefix + "/day1")
+	day1.Solution(inputPrefix + "/day1")
 }

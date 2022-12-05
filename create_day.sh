@@ -16,3 +16,5 @@ func Solution(inputPath string) {
     })
 }
 END
+
+touch "./input/day$day_idx"

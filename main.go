@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/A-Siam/aoc-go/day1"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	inputPrefix := "./input"
+	fmt.Println("Day 1")
+	day1.Day1(inputPrefix + "/day1")
 }

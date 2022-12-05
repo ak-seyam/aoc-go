@@ -19,3 +19,7 @@ func SetIntersect[T comparable](set1, set2 Set[T]) Set[T] {
 	}
 	return res
 }
+
+type Number interface {
+	int | int32 | int64 | float32 | float64
+}

@@ -7,7 +7,7 @@ import (
 	"github.com/A-Siam/aoc-go/utils"
 )
 
-func Solution(inputPath string) {
+func Solution_pt1(inputPath string) {
 	var max int64 = 0
 	var res int64 = 0
 	utils.GetInput(inputPath, func(line string) {

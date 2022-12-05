@@ -5,6 +5,7 @@ import (
 
 	"github.com/A-Siam/aoc-go/day1"
 	"github.com/A-Siam/aoc-go/day2"
+	"github.com/A-Siam/aoc-go/day3"
 )
 
 func main() {
@@ -15,4 +16,6 @@ func main() {
 	day2.Solution_pt1(inputPrefix + "/day2")
 	fmt.Println("Day 2 Pt.2")
 	day2.Solution_pt2(inputPrefix + "/day2")
+	fmt.Println("Day 3")
+	day3.Solution_pt1(inputPrefix + "/day3")
 }

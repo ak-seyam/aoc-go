@@ -9,3 +9,13 @@ func ToSet[T comparable](col []T) Set[T] {
 	}
 	return res
 }
+
+func SetIntersect[T comparable](set1, set2 Set[T]) Set[T] {
+	res := make(Set[T])
+	for e := range set1 {
+		if set2[e] {
+			res[e] = true
+		}
+	}
+	return res
+}

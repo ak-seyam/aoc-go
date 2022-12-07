@@ -11,3 +11,7 @@ func Max[T number](x, y T) T {
 		return y
 	}
 }
+
+func BetweenInclusive[T number](n, start, end T) bool {
+	return n >= start && n <= end
+}

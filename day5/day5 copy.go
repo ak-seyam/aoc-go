@@ -8,7 +8,7 @@ import (
 	"github.com/A-Siam/aoc-go/utils"
 )
 
-func SolutionPt1(puzPath string, movPath string, puzSize int) {
+func SolutionPt2(puzPath string, movPath string, puzSize int) {
 	var world []utils.Stack[string]
 
 	// init world and topIdx
@@ -35,8 +35,15 @@ func SolutionPt1(puzPath string, movPath string, puzSize int) {
 		to, _ := strconv.Atoi(splits[5])
 		from0Idx := from - 1
 		to0Idx := to - 1
+		iStack := utils.NewStack([]string{})
 		for i := 0; i < amount; i++ {
 			val, _ := world[from0Idx].Pop()
+			if val != nil {
+				iStack.Push(*val)
+			}
+		}
+		for i := 0; i < amount; i++ {
+			val, _ := iStack.Pop()
 			if val != nil {
 				world[to0Idx].Push(*val)
 			}

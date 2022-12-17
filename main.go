@@ -29,5 +29,7 @@ func main() {
 	fmt.Println("Day 4 Pt.2")
 	day4.Solution_pt2(inputPrefix + "/day4")
 	fmt.Println("Day 5 Pt.1")
-	day5.Solution(inputPrefix+"/day5/complx/puz", inputPrefix+"/day5/complx/steps", 9)
+	day5.SolutionPt1(inputPrefix+"/day5/complx/puz", inputPrefix+"/day5/complx/steps", 9)
+	fmt.Println("Day 5 Pt.2")
+	day5.SolutionPt2(inputPrefix+"/day5/complx/puz", inputPrefix+"/day5/complx/steps", 9)
 }

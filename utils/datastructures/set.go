@@ -2,6 +2,10 @@ package datastructures
 
 type Set[T comparable] map[T]bool
 
+func (s *Set[T]) Add(e T) {
+	(*s)[e] = true
+}
+
 func NewSet[T comparable](col []T) Set[T] {
 	res := make(Set[T])
 	for _, e := range col {

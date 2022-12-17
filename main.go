@@ -8,6 +8,7 @@ import (
 	"github.com/A-Siam/aoc-go/day3"
 	"github.com/A-Siam/aoc-go/day4"
 	"github.com/A-Siam/aoc-go/day5"
+	"github.com/A-Siam/aoc-go/day6"
 )
 
 func main() {
@@ -32,4 +33,8 @@ func main() {
 	day5.SolutionPt1(inputPrefix+"/day5/complx/puz", inputPrefix+"/day5/complx/steps", 9)
 	fmt.Println("Day 5 Pt.2")
 	day5.SolutionPt2(inputPrefix+"/day5/complx/puz", inputPrefix+"/day5/complx/steps", 9)
+	fmt.Println("Day 6 Pt.1")
+	day6.Solution(inputPrefix+"/day6", 4)
+	fmt.Println("Day 6 Pt.2")
+	day6.Solution(inputPrefix+"/day6", 14)
 }

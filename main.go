@@ -62,5 +62,72 @@ func main() {
 	)
 	fmt.Println("Solution", smallest)
 	fmt.Println("Day 8 Pt.1")
-	day8.Solution(inputPrefix + "/day8")
+	day8.Solution(inputPrefix+"/day8", func(mat, matTopBottom, matBottomTop, matLeftRight, matRightLeft [][]int) {
+		res := 2*len(mat) + 2*len(mat[0]) - 4
+		for i := 1; i < len(mat)-1; i++ {
+			for j := 1; j < len(mat[0])-1; j++ {
+				left := matLeftRight[i][j-1]
+				right := matRightLeft[i][j+1]
+				top := matTopBottom[i-1][j]
+				bottom := matBottomTop[i+1][j]
+				val := mat[i][j]
+				if val > left || val > right || val > top || val > bottom {
+					res++
+					continue
+				}
+			}
+		}
+		fmt.Println("number of visible trees", res)
+	})
+	fmt.Println("Day 8 Pt.2")
+	day8.Solution(inputPrefix+"/day8", func(mat, matTopBottom, matBottomTop, matLeftRight, matRightLeft [][]int) {
+		res := 0
+		for i := 0; i < len(mat); i++ {
+			for j := 0; j < len(mat[0]); j++ {
+				valuesFromBottom := 1
+				valuesFromTop := 1
+				valuesFromRight := 1
+				valuesFromLeft := 1
+				if i == 0 {
+					valuesFromTop = 0
+					for k := i + 1; k < len(mat) && mat[k][j] < mat[i][j]; k++ {
+						valuesFromBottom++
+					}
+				} else if i == len(mat)-1 {
+					valuesFromBottom = 0
+					for k := i; k > 0 && mat[k][j] < mat[i][j]; k-- {
+						valuesFromTop++
+					}
+				} else {
+					for k := i + 1; k < len(mat) && mat[k][j] < mat[i][j]; k++ {
+						valuesFromBottom++
+					}
+					for k := i; k > 0 && mat[k][j] < mat[i][j]; k-- {
+						valuesFromTop++
+					}
+				}
+				if j == 0 {
+					valuesFromLeft = 0
+					for k := j + 1; k < len(mat) && mat[i][k] < mat[i][j]; k++ {
+						valuesFromRight++
+					}
+				} else if j == len(mat[0])-1 {
+					valuesFromRight = 0
+					for k := len(mat) - 1; k > -1 && mat[i][k] < mat[i][j]; k-- {
+						valuesFromLeft++
+					}
+				} else {
+					for k := j + 1; k < len(mat) && mat[i][k] < mat[i][j]; k++ {
+						valuesFromRight++
+					}
+					for k := len(mat) - 1; k > -1 && mat[i][k] < mat[i][j]; k-- {
+						valuesFromLeft++
+					}
+				}
+				res = int(math.Max(float64(res), float64(valuesFromBottom*valuesFromLeft*valuesFromRight*valuesFromTop)))
+			}
+		}
+		fmt.Println("result is", res)
+	})
+
 }

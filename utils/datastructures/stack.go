@@ -14,6 +14,14 @@ func NewStack[T interface{}](inner []T) Stack[T] {
 	}
 }
 
+func (s *Stack[T]) Top() (*T, error) {
+	if s.topIdx == -1 {
+		return nil, errors.New("empty stack")
+	} else {
+		return &s.innerList[s.topIdx], nil
+	}
+}
+
 /*
 return reference to element or nil if error
 */

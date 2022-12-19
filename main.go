@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 
 	"github.com/A-Siam/aoc-go/day1"
 	"github.com/A-Siam/aoc-go/day2"
@@ -9,6 +10,7 @@ import (
 	"github.com/A-Siam/aoc-go/day4"
 	"github.com/A-Siam/aoc-go/day5"
 	"github.com/A-Siam/aoc-go/day6"
+	"github.com/A-Siam/aoc-go/day7"
 )
 
 func main() {
@@ -37,4 +39,25 @@ func main() {
 	day6.Solution(inputPrefix+"/day6", 4)
 	fmt.Println("Day 6 Pt.2")
 	day6.Solution(inputPrefix+"/day6", 14)
+	fmt.Println("Day 7 Pt.1")
+	var sum int64 = 0
+	day7.Solution(inputPrefix+"/day7", func(f day7.File, root day7.File) bool {
+		return f.Size <= 100000
+	}, func(f day7.File) {
+		sum += f.Size
+	})
+	fmt.Println("sum is", sum)
+	fmt.Println("Day 7 Pt.2")
+	var requiredSize int64 = 30000000
+	var smallest int64 = 70000000
+	day7.Solution(inputPrefix+"/day7",
+		func(f day7.File, root day7.File) bool {
+			availableSize := 70000000 - root.Size
+			return f.Size+availableSize > requiredSize
+		},
+		func(f day7.File) {
+			smallest = int64(math.Min(float64(f.Size), float64(smallest)))
+		},
+	)
+	fmt.Println("Solution", smallest)
 }

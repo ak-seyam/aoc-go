@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
+set -e
+
 day_idx=$1
+
+if [[ -z $AOC_SESSION ]]; then
+	echo "please set AOC_SESSION variable to your aoc sesssion cookie value"
+	exit 1
+fi
 
 mkdir "./day$day_idx"
 file_path="./day$day_idx/day$day_idx.go"
@@ -17,4 +24,7 @@ func Solution(inputPath string) {
 }
 END
 
-touch "./input/day$day_idx"
+input_file="./input/day$day_idx"
+
+curl "https://adventofcode.com/2022/day/$day_idx/input" \
+	-H "cookie:session=$AOC_SESSION" > $input_file

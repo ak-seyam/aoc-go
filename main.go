@@ -11,6 +11,7 @@ import (
 	"github.com/A-Siam/aoc-go/day5"
 	"github.com/A-Siam/aoc-go/day6"
 	"github.com/A-Siam/aoc-go/day7"
+	"github.com/A-Siam/aoc-go/day8"
 )
 
 func main() {
@@ -60,4 +61,6 @@ func main() {
 		},
 	)
 	fmt.Println("Solution", smallest)
+	fmt.Println("Day 8 Pt.1")
+	day8.Solution(inputPrefix + "/day8")
 }

@@ -12,7 +12,7 @@ fi
 mkdir "./day$day_idx"
 file_path="./day$day_idx/day$day_idx.go"
 
-cat << END > $file_path
+cat << END > "$file_path"
 package day$day_idx
 
 import "github.com/A-Siam/aoc-go/utils"
@@ -27,4 +27,4 @@ END
 input_file="./input/day$day_idx"
 
 curl "https://adventofcode.com/2022/day/$day_idx/input" \
-	-H "cookie:session=$AOC_SESSION" > $input_file
+	-H "cookie:session=$AOC_SESSION" > "$input_file"

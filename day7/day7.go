@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/A-Siam/aoc-go/utils"
-	"github.com/A-Siam/aoc-go/utils/datastructures"
+	"github.com/A-Siam/aoc-go/utils/data_structures"
 )
 
 type File struct {
@@ -46,7 +46,7 @@ func tokenize(command string) Command {
 
 func Solution(inputPath string, cond Condition, op Operation) {
 	root := newFile("/", 0, nil)
-	dirStack := datastructures.NewStack([]*File{})
+	dirStack := data_structures.NewStack([]*File{})
 	dirStack.Push(&root)
 	filesMap := []*File{}
 	filesMap = append(filesMap, &root)

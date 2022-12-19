@@ -6,15 +6,15 @@ import (
 	"strings"
 
 	"github.com/A-Siam/aoc-go/utils"
-	"github.com/A-Siam/aoc-go/utils/datastructures"
+	"github.com/A-Siam/aoc-go/utils/data_structures"
 )
 
 func SolutionPt2(puzPath string, movPath string, puzSize int) {
-	var world []datastructures.Stack[string]
+	var world []data_structures.Stack[string]
 
 	// init world and topIdx
 	for i := 0; i < puzSize; i++ {
-		world = append(world, datastructures.NewStack([]string{}))
+		world = append(world, data_structures.NewStack([]string{}))
 	}
 
 	utils.GetInput(puzPath, func(line string) {
@@ -36,7 +36,7 @@ func SolutionPt2(puzPath string, movPath string, puzSize int) {
 		to, _ := strconv.Atoi(splits[5])
 		from0Idx := from - 1
 		to0Idx := to - 1
-		iStack := datastructures.NewStack([]string{})
+		iStack := data_structures.NewStack([]string{})
 		for i := 0; i < amount; i++ {
 			val, _ := world[from0Idx].Pop()
 			if val != nil {

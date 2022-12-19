@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/A-Siam/aoc-go/utils"
-	"github.com/A-Siam/aoc-go/utils/datastructures"
+	"github.com/A-Siam/aoc-go/utils/data_structures"
 )
 
 func Solution_pt2(inputPath string) {
@@ -24,7 +24,7 @@ func Solution_pt2(inputPath string) {
 	fmt.Println("Highest is", top3[0]+top3[1]+top3[2])
 }
 
-func updateTop3[T datastructures.Number](res T, top3 *[3]T) {
+func updateTop3[T data_structures.Number](res T, top3 *[3]T) {
 	if res > top3[0] {
 		top3[2] = top3[1]
 		top3[1] = top3[0]

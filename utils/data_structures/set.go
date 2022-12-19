@@ -1,4 +1,4 @@
-package datastructures
+package data_structures
 
 type Set[T comparable] map[T]bool
 

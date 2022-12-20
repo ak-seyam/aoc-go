@@ -12,6 +12,7 @@ import (
 	"github.com/A-Siam/aoc-go/day6"
 	"github.com/A-Siam/aoc-go/day7"
 	"github.com/A-Siam/aoc-go/day8"
+	"github.com/A-Siam/aoc-go/utils"
 )
 
 func main() {
@@ -82,51 +83,42 @@ func main() {
 	fmt.Println("Day 8 Pt.2")
 	day8.Solution(inputPrefix+"/day8", func(mat, matTopBottom, matBottomTop, matLeftRight, matRightLeft [][]int) {
 		res := 0
-		for i := 0; i < len(mat); i++ {
-			for j := 0; j < len(mat[0]); j++ {
-				valuesFromBottom := 1
-				valuesFromTop := 1
-				valuesFromRight := 1
-				valuesFromLeft := 1
-				if i == 0 {
-					valuesFromTop = 0
-					for k := i + 1; k < len(mat) && mat[k][j] < mat[i][j]; k++ {
-						valuesFromBottom++
-					}
-				} else if i == len(mat)-1 {
-					valuesFromBottom = 0
-					for k := i; k > 0 && mat[k][j] < mat[i][j]; k-- {
-						valuesFromTop++
-					}
-				} else {
-					for k := i + 1; k < len(mat) && mat[k][j] < mat[i][j]; k++ {
-						valuesFromBottom++
-					}
-					for k := i; k > 0 && mat[k][j] < mat[i][j]; k-- {
-						valuesFromTop++
+		for i := 1; i < len(mat)-1; i++ {
+			for j := 1; j < len(mat[0])-1; j++ {
+				// scan top
+				valueFromTop := 0
+				valueFromBottom := 0
+				valueFromRight := 0
+				valueFromLeft := 0
+				for k := i + 1; k < len(mat); k++ {
+					valueFromBottom++
+					if mat[i][j] <= mat[k][j] {
+						break
 					}
 				}
-				if j == 0 {
-					valuesFromLeft = 0
-					for k := j + 1; k < len(mat) && mat[i][k] < mat[i][j]; k++ {
-						valuesFromRight++
-					}
-				} else if j == len(mat[0])-1 {
-					valuesFromRight = 0
-					for k := len(mat) - 1; k > -1 && mat[i][k] < mat[i][j]; k-- {
-						valuesFromLeft++
-					}
-				} else {
-					for k := j + 1; k < len(mat) && mat[i][k] < mat[i][j]; k++ {
-						valuesFromRight++
-					}
-					for k := len(mat) - 1; k > -1 && mat[i][k] < mat[i][j]; k-- {
-						valuesFromLeft++
+				for k := i - 1; k > -1; k-- {
+					valueFromTop++
+					if mat[i][j] <= mat[k][j] {
+						break
 					}
 				}
-				res = int(math.Max(float64(res), float64(valuesFromBottom*valuesFromLeft*valuesFromRight*valuesFromTop)))
+				for k := j - 1; k > -1; k-- {
+					valueFromLeft++
+					if mat[i][j] <= mat[i][k] {
+						break
+					}
+				}
+				for k := j + 1; k < len(mat); k++ {
+					valueFromRight++
+					if mat[i][j] <= mat[i][k] {
+						break
+					}
+				}
+				scenicScore := valueFromBottom * valueFromLeft * valueFromRight * valueFromTop
+				res = utils.Max(res, scenicScore)
 			}
 		}
+
 		fmt.Println("result is", res)
 	})
 
